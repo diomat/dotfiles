@@ -78,6 +78,36 @@ function fish_prompt --description 'Write out the prompt'
 end
 
 function time --description="Time just like in Bash"
-    command time --portability $argv
+  command time --portability $argv
 end
 
+# my aliases
+alias rbu="cd /home/dio/projekte/rbu/gitrepo/pizza_man"
+# alias lock="i3lock -d -c 000000"
+alias h=history
+alias c=clear
+alias ai="sudo apt-get install"
+alias ar="sudo apt-get remove"
+alias as="apt-cache show"
+alias ase="apt-cache search"
+
+function youvid --description "Download video from Youtube in 720p quality. URL must be in quotes."
+  command youtube-dl --restrict-filenames -o "%(title)s.%(ext)s" -wci "$argv"
+#youtube-dl --restrict-filenames -o "%(title)s.%(ext)s" -wci --max-quality=22 $1
+end
+
+function youvidlow --description "Download video from Youtube in 480p quality. URL must be in quotes."
+  youtube-dl --restrict-filenames -o "%(title)s.%(ext)s" -wci --max-quality=18 "$argv"
+end
+
+function yoump3 --description "Download video from Youtube and encode it in mp3. URL must be in quotes."
+  youtube-dl -o "%(title)s.%(ext)s" --restrict-filenames --max-quality 22 -wci --extract-audio --audio-format mp3 "$argv"
+end
+
+function youplaymp3 --description "Download playlist from Youtube and encode it in mp3. Usage: youplaymp3 \$position 'URL'"
+  youtube-dl -o "%(title)s.%(ext)s" --restrict-filenames --max-quality 22 -wci --extract-audio --audio-format mp3 --playlist-start $argv[1]  $argv[2]
+end
+
+function youplayvid --description "Download video playlist from Youtube. Usage: youplayvid \$position 'URL'"
+  youtube-dl -o "%(title)s.%(ext)s" --restrict-filenames --max-quality 22 -wci  --playlist-start $argv[1] $argv[2]
+end
