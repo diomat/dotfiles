@@ -1,4 +1,3 @@
-function tmux2
-	tmux -2
+function tmux --description="Call tmux with 256 color support"
+	command tmux -2
 end
--- call tmux with 256 color support
