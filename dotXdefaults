@@ -1,0 +1,40 @@
+
+
+!-- Xft settings -- !
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
+! -- Fonts -- !
+URxvt.font:xft:droid sans mono:medium:pixelsize=14
+URxvt.boldFont:xft:droid sans mono:medium:pixelsize=14
+
+urxvt*geometry:                80x30
+
+urxvt*scrollBar:            true
+urxvt*scrollBar_right: 			true
+
+urxvt*background:            rgba:0000/0000/0000/cccc
+!urxvt*background:            #000000
+urxvt*foreground:            #c8c8c8
+urxvt*color0:                #000000
+urxvt*color1:                #b33636
+urxvt*color2:                #6ba82a
+urxvt*color3:                #deaf40
+urxvt*color4:                #5a78ad
+urxvt*color5:                #ab4382
+urxvt*color6:                #39a0b3
+urxvt*color7:                #c8c8c8
+urxvt*color8:                #646464
+urxvt*color9:                #e61717
+urxvt*color10:                #78dc0c
+urxvt*color11:                #f1e022
+urxvt*color12:                #699dfa
+urxvt*color13:                #de2a98
+urxvt*color14:                #13d1f3
+urxvt*color15:                #ffffff
+
+urxvt*saveLines:            10000
+urxvt*loginShell: true
