@@ -1,0 +1,163 @@
+"if has('gui_running')
+"  colorscheme argonaut
+	colorscheme vividchalk
+"else
+  "colorscheme twilight
+"endif
+
+
+" Start Pathogen
+"call pathogen#runtime_append_all_bundles() " Pathogen hack
+"call pathogen#helptags()
+
+execute pathogen#infect()
+
+" vim slime
+let g:slime_target = "tmux"
+
+" syntastic
+let g:syntastic_auto_jump=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_loc_list_height=7
+
+" keine kompatibilität mit vi
+set nocompatible
+
+" syntax highlighting on
+syntax on
+
+filetype on
+
+" for correct eruby (*.html.erb) highlighting
+"autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
+
+" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+filetype plugin on
+
+let mapleader = ","
+
+"Schnell zum aktuellen Projekt wechseln
+nmap <Leader>co :cd $HOME/Dropbox/uni/bachelor/latex/<CR>:pwd<CR>
+
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+" OPTIONAL: This enables automatic indentation as you type.
+filetype indent on
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+
+
+let g:Tex_DefaultTargetFormat='pdf' "default ausgabeformat für latex = pdf
+"programm zum öffnen von pdfs festlegen. xdg-open öffnet den default viewer der
+"im os eingestellt ist
+let g:Tex_ViewRule_pdf='xdg-open'
+let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode $*'
+
+set number
+
+"set matchpairs=(:),{:},[:],<:>
+
+" beim suchen direkt zu treffern springen (während des tippens)
+set incsearch
+
+" beim suchen gefundene wörter highlighten
+set hlsearch
+
+set autoindent
+
+" zeile hervorheben
+set cursorline
+
+" spalte hervorheben
+"set cursorcolumn
+
+" springt beim schliessen einer klammer kurz zur öffnenden klammer
+"set showmatch
+
+"horizontale scrollbar
+set guioptions+=b
+
+"Zeilenumbruch an/aus
+function! ToggleWrap()
+ if (&wrap == 1)
+   set nowrap
+ else
+   set wrap linebreak textwidth=80
+ endif
+endfunction
+
+" Toggle wrap text
+map <F4> :call ToggleWrap()<CR>
+
+"Tabs sind 2 Leerzeichen lang
+set tabstop=2
+
+" Textbreite setzen set tw=$number
+set textwidth=80
+
+" To set the toolbars off (icons on top of the screen)
+set guioptions-=T
+
+" Let Control-S be 'save' as it is in most other editors
+map <C-s> :w<CR>
+imap <C-s> <C-o>:w<CR>
+
+" navigating with Ctrl + cursorKeys when working with multiple windows
+noremap <silent> <C-Down> <C-W>j
+noremap <silent> <C-Up> <C-W>k
+noremap <silent> <C-Left> <C-W>h
+noremap <silent> <C-Right> <C-W>l
+
+" close window immediately without saving
+noremap <silent> <C-F12> :bd!<CR>
+
+" switch text highlighting on/off (e.g. after a search)
+nnoremap <F2> :set hlsearch!<CR>
+
+" timestamp an cursorposition einfügen
+nmap <F3> a<C-R>=strftime("%j %Y-%m-%d %a %H:%M %p")<CR>
+"imap <F3> <C-R>=strftime("%j %Y-%m-%d %a %I:%M %p")<CR>
+"imap <F3> <C-R>=strftime("%j %Y-%m-%d %a %H:%M %p")<CR>
+
+" Legt ein undo-Datei an, so dass man auch nachdem man eine Datei geschlossen
+" hat und diese wieder öffnet "undo's" machen kann
+set undofile
+" set a directory to store the undo history
+set undodir=~/.vimundo/
+
+" For "normal" regex Expression not the custom one's of vim
+nnoremap / /\v
+vnoremap / /\v
+
+" Makes Vim deal with case-sensitive search intelligently. If you search for an
+" all-lowercase string your search will be case-insensitive, but if one or more
+" characters is uppercase the search will be case-sensitive
+set ignorecase
+set smartcase
+
+" Global substitution of expressions :%s/foo/bar/ -> :%s/foo/bar/g
+set gdefault
+
+" Hard-Rewrap Text
+nnoremap <leader>q gqip
+
+" open current file in vsplit
+nnoremap <leader>w <C-w>v<C-w>l
+
+" binding for ack (grep substitute)
+nnoremap <leader>a :Ack
+
+" for powerline
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+
+" Always show statusline
+set laststatus=2
+
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
