@@ -92,7 +92,7 @@ alias as="apt-cache show"
 alias ase="apt-cache search"
 
 function youvid --description "Download video from Youtube in best available quality. URL must be in quotes."
-  command youtube-dl --restrict-filenames -o "%(title)s.%(ext)s" -wci --add-metadata --metadata-from-title "%(artist)s -%(title)s" "$argv"
+  command youtube-dl --restrict-filenames -o "%(title)s.%(ext)s" -wci -f best  --add-metadata --metadata-from-title "%(artist)s -%(title)s" "$argv"
 #youtube-dl --restrict-filenames -o "%(title)s.%(ext)s" -wci --max-quality=22 $1
 end
 
@@ -101,15 +101,15 @@ function youvidlow --description "Download video from Youtube in 480p quality. U
 end
 
 function yoump3 --description "Download video from Youtube and encode it in mp3. URL must be in quotes."
-  youtube-dl -o "%(title)s.%(ext)s" --restrict-filenames -f 22 -wci --extract-audio --audio-format mp3 --add-metadata --metadata-from-title "%(artist)s -%(title)s" "$argv"
+  youtube-dl -o "%(title)s.%(ext)s" --restrict-filenames -f best -wci --extract-audio --audio-format mp3 --add-metadata --metadata-from-title "%(artist)s -%(title)s" "$argv"
 end
 
 function youplaymp3 --description "Download playlist from Youtube and encode it in mp3. Usage: youplaymp3 \$position 'URL'"
-  youtube-dl -o "%(title)s.%(ext)s" --restrict-filenames -f 22 --add-metadata  --metadata-from-title "%(artist)s -%(title)s" -wci --extract-audio --audio-format mp3 --playlist-start $argv[1]  $argv[2]
+  youtube-dl -o "%(title)s.%(ext)s" --restrict-filenames -f best --add-metadata  --metadata-from-title "%(artist)s -%(title)s" -wci --extract-audio --audio-format mp3 --playlist-start $argv[1]  $argv[2]
 end
 
 function youplayvid --description "Download video playlist from Youtube. Usage: youplayvid \$position 'URL'"
-  youtube-dl -o "%(title)s.%(ext)s" --restrict-filenames -f 22 --add-metadata  --metadata-from-title "%(artist)s -%(title)s" -wci  --playlist-start $argv[1] $argv[2]
+  youtube-dl -o "%(title)s.%(ext)s" --restrict-filenames -f best --add-metadata  --metadata-from-title "%(artist)s -%(title)s" -wci  --playlist-start $argv[1] $argv[2]
 end
 
 # change color highlighting of ls command
