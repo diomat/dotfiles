@@ -3,12 +3,16 @@ set fish_greeting
 set -g __fish_git_prompt_show_informative_status 1
 set -g __fish_git_prompt_hide_untrackedfiles 1
 
-set -g __fish_git_prompt_color_branch magenta bold
+set -g __fish_git_prompt_color_branch magenta
 set -g __fish_git_prompt_showupstream "informative"
 set -g __fish_git_prompt_char_upstream_ahead "↑"
 set -g __fish_git_prompt_char_upstream_behind "↓"
 set -g __fish_git_prompt_char_upstream_prefix ""
 
+
+# You need at least fish-shell 2.2.1 from the PPA for
+# the special characters to work
+# ppa:fish-shell/release-2
 set -g __fish_git_prompt_char_stagedstate "●"
 # set -g __fish_git_prompt_char_dirtystate "✚"
 set -g __fish_git_prompt_char_dirtystate "⚡"
@@ -20,7 +24,7 @@ set -g __fish_git_prompt_color_dirtystate blue
 set -g __fish_git_prompt_color_stagedstate yellow
 set -g __fish_git_prompt_color_invalidstate red
 set -g __fish_git_prompt_color_untrackedfiles $fish_color_normal
-set -g __fish_git_prompt_color_cleanstate green bold
+set -g __fish_git_prompt_color_cleanstate green
 
 # powerline directory
 set fish_function_path $fish_function_path "/usr/local/lib/python2.7/site-packages/powerline/bindings/fish" powerline-setup
@@ -72,7 +76,7 @@ function fish_prompt --description 'Write out the prompt'
   # end
 
   if not test $last_status -eq 0
-  set_color $fish_color_error
+ 	 set_color $fish_color_error
   end
 
 end
