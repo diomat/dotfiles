@@ -10,7 +10,7 @@ endif
 "call pathogen#runtime_append_all_bundles() " Pathogen hack
 "call pathogen#helptags()
 
-execute pathogen#infect()
+"execute pathogen#infect()
 
 " vim slime
 let g:slime_target = "tmux"
@@ -154,7 +154,7 @@ nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>a :Ack
 
 " for powerline
-set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+"set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 
 " Always show statusline
 set laststatus=2
