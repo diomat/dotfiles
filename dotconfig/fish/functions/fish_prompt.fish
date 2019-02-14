@@ -1,4 +1,6 @@
 function fish_prompt --description 'Write out the prompt'
+	set -g grey 333
+
 	set -l last_status $status
 
   set_color cyan --bold
