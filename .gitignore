@@ -3,3 +3,4 @@ fish_read_history
 fishd.*
 *.swp
 *.*~
+fish_variables
